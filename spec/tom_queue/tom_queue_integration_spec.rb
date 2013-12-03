@@ -204,6 +204,7 @@ describe TomQueue::QueueManager, "simple publish / pop" do
         work = "work #{i}"
         source_order << work
         manager.publish(work)
+        sleep 0.1
       end
         
       # Now publish a bunch of messages to cause the threads to exit the loop
@@ -235,6 +236,7 @@ describe TomQueue::QueueManager, "simple publish / pop" do
         work = "work #{i}"
         source_order << work
         manager.publish(work)
+        sleep 0.1
       end
 
       # Rough and ready - wait for the queue to empty
@@ -245,6 +247,7 @@ describe TomQueue::QueueManager, "simple publish / pop" do
         work = "work 2-#{i}"
         source_order << work
         manager.publish(work)
+        sleep 0.1
       end
 
       # Now publish a bunch of messages to cause the threads to exit the loop

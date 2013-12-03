@@ -305,9 +305,13 @@ describe TomQueue, "once hooked" do
 
       Delayed::Job.tomqueue_manager.queues[TomQueue::NORMAL_PRIORITY].purge
       queue = Delayed::Job.tomqueue_manager.queues[TomQueue::NORMAL_PRIORITY]
+      # FIXME: Sleeping to let thread finish
+      sleep 0.5
       queue.message_count.should == 0
 
       Delayed::Job.tomqueue_republish
+      # FIXME: Sleeping to let thread finish
+      sleep 0.5
       queue.message_count.should == 10
     end
 
@@ -317,9 +321,13 @@ describe TomQueue, "once hooked" do
 
       Delayed::Job.tomqueue_manager.queues[TomQueue::NORMAL_PRIORITY].purge
       queue = Delayed::Job.tomqueue_manager.queues[TomQueue::NORMAL_PRIORITY]
+      # FIXME: Sleeping to let thread finish
+      sleep 0.5
       queue.message_count.should == 0
 
       Delayed::Job.where('id IN (?)', second_ids).tomqueue_republish
+      # FIXME: Sleeping to let thread finish
+      sleep 0.5
       queue.message_count.should == 7
     end
 

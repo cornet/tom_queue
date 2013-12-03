@@ -56,6 +56,8 @@ describe Delayed::Job, "integration spec", :timeout => 10 do
   it "should actually be using the queue" do
     Delayed::Job.enqueue(TestJobClass.new(job_name))
 
+    # FIXME: Sleeping to let thread finish
+    sleep 0.1
     Delayed::Job.tomqueue_manager.queues[TomQueue::NORMAL_PRIORITY].status[:message_count].should == 1
   end
 

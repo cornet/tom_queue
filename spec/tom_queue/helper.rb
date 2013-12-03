@@ -69,7 +69,7 @@ RSpec.configure do |r|
 
   # All tests should take < 2 seconds !!
   r.around do |test|
-    timeout = self.class.metadata[:timeout] || 2
+    timeout = self.class.metadata[:timeout] || 5
     if timeout == false
       test.call
     else
